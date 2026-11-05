@@ -1,0 +1,376 @@
+
+/* ===== GLOBAL STYLES ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f7faf8;
+    color: #183b30;
+    line-height: 1.6;
+}
+
+/* ===== NAVBAR ===== */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: #ffffff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: #176b50;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: #35564a;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #15966b;
+}
+
+/* ===== BUTTONS ===== */
+
+.btn-primary,
+.btn-outline {
+    display: inline-block;
+    padding: 11px 23px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: #176b50;
+    color: white !important;
+    border: 2px solid #176b50;
+}
+
+.btn-primary:hover {
+    background: #10513c;
+    border-color: #10513c;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 2px solid #176b50;
+    color: #176b50 !important;
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: #e6f3ec;
+    transform: translateY(-2px);
+}
+
+/* ===== HERO SECTION ===== */
+
+.hero {
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    padding: 80px 10%;
+    background: linear-gradient(
+        120deg,
+        #e6f3ec,
+        #f7faf8,
+        #dcefe5
+    );
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.tagline {
+    color: #15966b;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: 1.12;
+    color: #123d2f;
+    margin-bottom: 22px;
+}
+
+.hero-content > p:not(.tagline) {
+    font-size: 18px;
+    color: #587267;
+    max-width: 580px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* ===== FEATURES SECTION ===== */
+
+.features {
+    padding: 80px 8%;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 34px;
+    color: #123d2f;
+    margin-bottom: 45px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.feature-card {
+    background: white;
+    padding: 30px 22px;
+    border-radius: 14px;
+    border: 1px solid #e2eee7;
+    box-shadow: 0 5px 20px rgba(20, 70, 50, 0.05);
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 25px rgba(20, 70, 50, 0.10);
+}
+
+.feature-card h3 {
+    color: #176b50;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: #71877d;
+    font-size: 14px;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #123d2f;
+    color: #dcefe5;
+    font-size: 14px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 900px) {
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .navbar {
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px;
+    }
+
+    .navbar nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .hero {
+        min-height: 450px;
+        padding: 65px 7%;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .features {
+        padding: 55px 7%;
+    }
+
+    .features h2 {
+        font-size: 27px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== AUTHENTICATION PAGES ===== */
+
+.auth-body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e6f3ec, #f7faf8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 440px;
+}
+
+.auth-logo {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #176b50;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.auth-card {
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(20, 70, 50, 0.09);
+}
+
+.auth-card h1 {
+    color: #123d2f;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.auth-subtitle {
+    color: #71877d;
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #35564a;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d9e6de;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+.form-group input:focus {
+    border-color: #176b50;
+    box-shadow: 0 0 0 3px rgba(23, 107, 80, 0.1);
+}
+
+.auth-submit {
+    width: 100%;
+    padding: 14px;
+    background: #176b50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-submit:hover {
+    background: #10513c;
+}
+
+.auth-switch {
+    text-align: center;
+    font-size: 14px;
+    color: #71877d;
+    margin-top: 25px;
+}
+
+.auth-switch a {
+    color: #176b50;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.back-home {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #176b50;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.auth-message {
+    font-size: 13px;
+    margin-bottom: 12px;
+    color: #b42318;
+}
+
+/* ===== REGISTRATION PAGE ===== */
+
+.auth-card {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.auth-card::-webkit-scrollbar {
+    width: 5px;
+}
+
+.auth-card::-webkit-scrollbar-thumb {
+    background: #c9ded1;
+    border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 25px 20px;
+    }
+
+    .auth-card h1 {
+        font-size: 26px;
+    }
+}

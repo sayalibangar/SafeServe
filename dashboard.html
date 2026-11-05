@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#102a24" />
+  <title>SafeServe | Canteen Safety & Waste Monitor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="SafeServe home">
+        <span class="brand-mark">S</span>
+        <span><strong>SafeServe</strong><small>CANTEEN OPERATIONS</small></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-item active" data-view="dashboard"><span class="nav-icon">▦</span> Dashboard</button>
+        <button class="nav-item" data-view="inventory"><span class="nav-icon">▤</span> Inventory <span class="nav-count" id="inventoryNavCount">0</span></button>
+        <button class="nav-item" data-view="hygiene"><span class="nav-icon">✓</span> Hygiene checklist</button>
+        <button class="nav-item" data-view="issues"><span class="nav-icon">⚑</span> Issue tracker <span class="nav-count" id="issueNavCount">0</span></button>
+        <button class="nav-item" data-view="waste"><span class="nav-icon">↗</span> Waste insights</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon">✦</div>
+          <strong>Small steps, safer food.</strong>
+          <p>Keep records visible. Make follow-up easier.</p>
+        </div>
+        <div class="profile">
+  <div class="avatar" id="profileAvatar">O</div>
+  <div>
+    <strong id="profileName">Owner</strong>
+    <small id="profileBusiness">My Business</small>
+  </div>
+</div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumbCurrent">Dashboard</strong></div>
+        <div class="topbar-right">
+            <button id="logoutButton" class="secondary-btn">Log out</button>
+          <span class="today-label" id="todayLabel"></span>
+          <span class="demo-pill"><i></i> LIVE WORKSPACE</span>
+        </div>
+      </header>
+
+      <section class="page" id="dashboardView">
+        <div class="page-heading">
+          <div><p class="eyebrow">THURSDAY • CANTEEN OVERVIEW</p><h1>Good morning <span>👋</span></h1><p class="subheading">Here's what's happening in your canteen today.</p></div>
+          <button class="primary-btn" data-action="add-stock">＋ Add inventory</button>
+        </div>
+        <div class="stat-grid">
+          <article class="stat-card"><div class="stat-top"><span>Inventory items</span><span class="stat-icon mint">▤</span></div><strong id="statInventory">0</strong><small><b class="positive">●</b> Items being monitored</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Expiry attention</span><span class="stat-icon amber">◷</span></div><strong id="statExpiry">0</strong><small>Expired or expiring in 3 days</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Pending hygiene</span><span class="stat-icon blue">✓</span></div><strong id="statHygiene">0</strong><small>Tasks still need attention</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Open concerns</span><span class="stat-icon rose">⚑</span></div><strong id="statIssues">0</strong><small>Reported or under review</small></article>
+        </div>
+        <div class="dashboard-grid">
+          <article class="panel inventory-panel">
+            <div class="panel-heading"><div><h2>Expiry watch</h2><p>Items that may need attention soon</p></div><button class="text-btn" data-view="inventory">View inventory →</button></div>
+            <div id="expiryPreview" class="table-wrap"></div>
+          </article>
+          <article class="panel hygiene-panel">
+            <div class="panel-heading"><div><h2>Today's hygiene tasks</h2><p>Daily checks and completion</p></div><button class="text-btn" data-view="hygiene">View all →</button></div>
+            <div id="hygienePreview" class="task-preview"></div>
+          </article>
+          <article class="panel waste-panel">
+            <div class="panel-heading"><div><h2>Waste snapshot</h2><p>Recorded food waste this week</p></div><button class="text-btn" data-view="waste">See insights →</button></div>
+            <div class="waste-snapshot"><div><strong id="wasteTotal">0 kg</strong><small>Recorded waste</small></div><div class="mini-bars" id="miniBars"><i style="height:25%"></i><i style="height:48%"></i><i style="height:34%"></i><i style="height:65%"></i><i style="height:42%"></i><i style="height:78%"></i><i style="height:30%"></i></div></div>
+          </article>
+          <article class="panel issues-panel">
+            <div class="panel-heading"><div><h2>Recent concerns</h2><p>Keep every report moving forward</p></div><button class="text-btn" data-view="issues">View tracker →</button></div>
+            <div id="issuePreview" class="issue-preview"></div>
+          </article>
+        </div>
+        <p class="disclaimer">SafeServe supports record-keeping and follow-up. It does not test food or confirm contamination.</p>
+      </section>
+
+      <section class="page hidden" id="inventoryView">
+        <div class="page-heading"><div><p class="eyebrow">STOCK CONTROL</p><h1>Inventory monitor</h1><p class="subheading">Track food items, quantities and expiry dates.</p></div><button class="primary-btn" data-action="add-stock">＋ Add inventory</button></div>
+        <div class="toolbar"><div class="search-box">⌕ <input id="inventorySearch" placeholder="Search food items..." /></div><select id="inventoryFilter"><option value="all">All items</option><option value="attention">Needs attention</option><option value="good">In date</option></select></div>
+        <article class="panel"><div id="inventoryTable" class="table-wrap"></div></article>
+      </section>
+
+      <section class="page hidden" id="hygieneView">
+        <div class="page-heading"><div><p class="eyebrow">DAILY ROUTINE</p><h1>Hygiene checklist</h1><p class="subheading">Record routine checks and keep incomplete tasks visible.</p></div><button class="secondary-btn" id="resetTasks">↻ Reset for demo</button></div>
+        <div class="progress-panel panel"><div><strong id="hygieneProgressText">0% complete</strong><p>Today's checklist progress</p></div><div class="progress-track"><span id="hygieneProgressBar"></span></div></div>
+        <div id="hygieneList" class="hygiene-list"></div>
+      </section>
+
+      <section class="page hidden" id="issuesView">
+        <div class="page-heading"><div><p class="eyebrow">REPORT & FOLLOW UP</p><h1>Issue tracker</h1><p class="subheading">Record concerns and track their corrective-action status.</p></div><button class="primary-btn" data-action="add-issue">＋ Report concern</button></div>
+        <div class="issue-summary" id="issueSummary"></div>
+        <div id="issuesList" class="issue-list"></div>
+      </section>
+
+      <section class="page hidden" id="wasteView">
+        <div class="page-heading"><div><p class="eyebrow">LEARN FROM RECORDS</p><h1>Waste insights</h1><p class="subheading">Understand what gets discarded and why.</p></div><button class="primary-btn" data-action="add-waste">＋ Log food waste</button></div>
+        <div class="waste-stats" id="wasteStats"></div>
+        <div class="waste-layout"><article class="panel"><div class="panel-heading"><div><h2>Waste by reason</h2><p>Based on recorded entries</p></div></div><div id="wasteReasons" class="reason-chart"></div></article><article class="panel"><div class="panel-heading"><div><h2>Recent waste logs</h2><p>Latest recorded entries</p></div></div><div id="wasteLogs" class="waste-log-list"></div></article></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header"><div><p class="eyebrow">SAFESERVE WORKSPACE</p><h2 id="modalTitle">Add record</h2></div><button class="close-btn" id="closeModal" aria-label="Close">×</button></div>
+      <form id="recordForm"><div id="formFields"></div><div class="modal-actions"><button type="button" class="secondary-btn" id="cancelModal">Cancel</button><button type="submit" class="primary-btn">Save record</button></div></form>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script type="module" src="dashboard.js"></script>
+</body>
+</html>
